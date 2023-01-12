@@ -1,4 +1,4 @@
-package util
+package utils
 
 // AES CBC库+Base64库实现加解密
 // 本文件节选自网络: http://www.zzvips.com/article/148213.html
