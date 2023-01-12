@@ -38,7 +38,7 @@ func GetIpInfo() {
 	if ip == nil {
 		fmt.Println("您输入的不是有效的IP地址，请重新输入！")
 	} else {
-		result := TabaoAPI(string(external_ip)) //调用淘宝API的json数据
+		result := GetIpInfoTabaoAPI(string(external_ip)) //调用淘宝API的json数据
 		if result != nil {
 			fmt.Println("国家：", result.Data.Country)
 			fmt.Println("地区：", result.Data.Area)
@@ -75,7 +75,7 @@ func GetIpInfo() {
 }
 
 // 调用淘宝API来显示IP信息
-func TabaoAPI(ip string) *IPInfo {
+func GetIpInfoTabaoAPI(ip string) *IPInfo {
 	url := "http://ip.taobao.com/service/getIpInfo.php?ip="
 	url += ip
 
