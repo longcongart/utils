@@ -3,13 +3,23 @@ package utils
 // 雪花算法
 // 本文件节选自网络:https://github.com/holdno/snowFlakeByGo
 /* 使用示例
-  var IdWorker *snowFlakeByGo.Worker
-	// 生成一个节点实例
-	IdWorker, _ = snowFlakeByGo.NewWorker(0) // 传入当前节点id 此id在机器集群中一定要唯一 且从0开始排最多1024个节点，可以根据节点的不同动态调整该算法每毫秒生成的id上限(如何调整会在后面讲到)
+import (
+	"fmt"
 
+	"github.com/longcongart/utils"
+)
+
+var IdWorker *utils.Worker
+
+func main() {
+	// 生成一个节点实例
+	IdWorker, _ = utils.NewWorker(0) // 传入当前节点id 此id在机器集群中一定要唯一 且从0开始排最多1024个节点，可以根据节点的不同动态调整该算法每毫秒生成的id上限(如何调整会在后面讲到)
 	// 获得唯一id
 	id := IdWorker.GetId()
 	// 就是这么easy...
+	fmt.Println(id)
+}
+
 */
 
 import (
