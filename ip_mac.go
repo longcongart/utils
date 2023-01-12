@@ -1,5 +1,29 @@
 package utils
+/* 示例
+package main
 
+import (
+	"fmt"
+
+	"github.com/longcongart/utils"
+)
+
+var IdWorker *utils.Worker
+
+func main() {
+	IdWorker, _ = utils.NewWorker(0)
+	id := IdWorker.GetId()
+	fmt.Println(id)
+
+	fmt.Println(utils.GetExternalIP()) //公网IP
+	fmt.Println(utils.GetIntranetIp()) //本机正在使用的内网IP
+	ips := utils.GetLocalIps()         //本机全部IP列表
+	mac := utils.GetLocalMac()         //本机第一块网卡
+	fmt.Println(ips, mac)
+	// 详细信息
+	utils.GetIpInfo()
+}
+*/
 import (
 	"bytes"
 	"encoding/json"
