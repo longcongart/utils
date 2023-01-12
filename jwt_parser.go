@@ -10,7 +10,7 @@ import (
 
 // TokenMetadata struct to describe metadata in JWT.
 type TokenMetadata struct {
-	UserID      uint64 //uuid.UUID
+	UserID      int64 //uuid.UUID
 	Credentials map[string]bool
 	Expires     int64
 }
@@ -27,7 +27,7 @@ func ExtractTokenMetadata(c *fiber.Ctx) (*TokenMetadata, error) {
 	if ok && token.Valid {
 		// 解析公共部分
 		// User ID.
-		userID := claims["uid"].(uint64) //采用snowFlake雪花算法 放弃uuid.Parse(claims["id"].(string))
+		userID := claims["uid"].(int64) //采用snowFlake雪花算法 放弃uuid.Parse(claims["id"].(string))
 		if userID <= 0 {
 			return nil, err
 		}
