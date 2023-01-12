@@ -48,7 +48,7 @@ func GetIpInfo() {
 	}
 	fmt.Println("------Dividing Line------")
 
-	GetIntranetIp() // 获取本机ip
+	fmt.Println(GetIntranetIp()) //本机IP
 
 	fmt.Println("------Dividing Line------")
 
@@ -117,27 +117,6 @@ func GetLocalIps() (ips []string) {
 	return ips
 }
 
-// 获取本机ip
-func GetIntranetIp() string {
-	interfaceAddrs, err := net.InterfaceAddrs()
-	if err != nil {
-		fmt.Println("get local ip failed")
-		return ""
-	}
-	for _, address := range interfaceAddrs {
-		if ipnet, ok := address.(*net.IPNet); ok && !ipnet.IP.IsLoopback() {
-			// if IsPublicIP(ipnet.IP) == true { //只获取公网IP
-			// 	return ipnet.IP.String()
-			// }
-			if ipnet.IP.To4() != nil {
-				fmt.Println("ip:", ipnet.IP.String())
-				//return ipnet.IP.String()
-			}
-		}
-	}
-	return ""
-}
-
 // 判断ip地址区间
 func IpBetween(from net.IP, to net.IP, test net.IP) bool {
 	if from == nil || to == nil || test == nil {
@@ -171,7 +150,7 @@ func GetExternalIP() string {
 }
 
 // 通过调用内网dns服务器8.8.8.8:80端口,获取本机正在使用的内网IP地址
-func GetPulicIP() string {
+func GetIntranetIp() string {
 	conn, _ := net.Dial("udp", "8.8.8.8:80")
 	defer conn.Close()
 	localAddr := conn.LocalAddr().String()
