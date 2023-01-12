@@ -19,7 +19,7 @@ type Tokens struct {
 }
 
 // GenerateNewTokens函数 用于生成新的访问和刷新令牌
-func GenerateNewTokens(uid uint64, credentials []string) (*Tokens, error) {
+func GenerateNewTokens(uid int64, credentials []string) (*Tokens, error) {
 	// 生成JWT访问令牌.
 	accessToken, err := generateNewAccessToken(uid, credentials)
 	if err != nil {
@@ -40,7 +40,7 @@ func GenerateNewTokens(uid uint64, credentials []string) (*Tokens, error) {
 }
 
 // 生成新的访问令牌
-func generateNewAccessToken(uid uint64, credentials []string) (string, error) {
+func generateNewAccessToken(uid int64, credentials []string) (string, error) {
 	// 从.env文件中读取密钥key设置 JWT_SECRET_KEY
 	secret := os.Getenv("JWT_SECRET_KEY")
 	// 从.env文件中读取到期分钟计数设置 JWT_SECRET_KEY_EXPIRE_MINUTES_COUNT
