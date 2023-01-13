@@ -13,7 +13,7 @@ func NewValidator() *validator.Validate {
 	validate := validator.New()
 
 	// 自定义验证器 采用雪花算法字段.
-	_ = validate.RegisterValidation("uid", func(fl validator.FieldLevel) bool {
+	_ = validate.RegisterValidation("id", func(fl validator.FieldLevel) bool {
 		field := fl.Field().String()
 		if uid, err := strconv.ParseInt(field, 10, 64); uid <= 0 || err != nil {
 			return true
